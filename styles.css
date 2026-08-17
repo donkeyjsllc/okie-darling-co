@@ -1,0 +1,397 @@
+/* ===========================================================
+   Okie Darling Co — design tokens
+   Palette pulled directly from the brand mark: distressed
+   barnwood black, turquoise, lavender-purple, leopard-print
+   tan, and a deep leopard-spot brown used sparingly.
+   =========================================================== */
+
+:root{
+  --bg:            #16120f;
+  --bg-card:       #211a15;
+  --bg-card-2:     #2a2119;
+  --line:          #3a2f26;
+
+  --cream:         #ecdfc4;
+  --cream-dim:     #cbbb99;
+
+  --teal:          #4fada6;
+  --teal-deep:     #35827c;
+  --purple:        #a889d6;
+  --purple-deep:   #7c56b8;
+  --leopard:       #6b4a2e;
+
+  --text:          #f1e9d8;
+  --text-dim:      #b9ab92;
+
+  --font-display:  'Rye', serif;
+  --font-body:     'Nunito Sans', system-ui, -apple-system, sans-serif;
+
+  --radius:        14px;
+  --wrap:          720px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+}
+
+/* subtle film-grain / barnwood texture over the whole page */
+.grain{
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  opacity:0.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.wrap{
+  max-width:var(--wrap);
+  margin:0 auto;
+  padding:0 24px;
+}
+.narrow{ max-width:640px; }
+
+img{ max-width:100%; display:block; }
+
+a{ color:var(--teal); text-decoration:none; }
+a:hover{ color:var(--purple); }
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--teal);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:400;
+  letter-spacing:0.01em;
+  line-height:1.15;
+  margin:0 0 0.5em;
+}
+
+h1{ font-size:clamp(2.1rem, 7vw, 3.1rem); color:var(--cream); }
+h2{ font-size:clamp(1.7rem, 5vw, 2.3rem); color:var(--teal); }
+h3{ font-size:1.25rem; color:var(--purple); margin-bottom:0.4em; }
+
+p{ margin:0 0 1em; color:var(--text-dim); }
+.section p:last-of-type{ margin-bottom:0; }
+
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:800;
+  font-size:0.78rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--purple);
+  margin:0 0 0.9em;
+}
+
+/* ===========================================================
+   Header
+   =========================================================== */
+.site-header{
+  position:sticky; top:0; z-index:20;
+  background:rgba(22,18,15,0.88);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top:10px; padding-bottom:10px;
+}
+.brand-mark{
+  width:44px; height:44px; border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--teal);
+}
+.site-nav{ display:flex; gap:20px; }
+.site-nav a{
+  font-weight:700; font-size:0.88rem;
+  color:var(--cream-dim);
+}
+.site-nav a:hover{ color:var(--teal); }
+
+@media (max-width:560px){
+  .site-nav{ gap:12px; }
+  .site-nav a{ font-size:0.76rem; }
+}
+
+/* ===========================================================
+   Hero
+   =========================================================== */
+.hero{
+  position:relative; z-index:2;
+  padding:64px 0 56px;
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(168,137,214,0.16), transparent 60%),
+    radial-gradient(ellipse at 50% 110%, rgba(79,173,166,0.14), transparent 60%);
+}
+.hero-logo{
+  width:150px; height:150px; border-radius:50%;
+  margin:0 auto 22px;
+  border:3px solid var(--teal);
+  box-shadow:0 0 0 6px rgba(79,173,166,0.08), 0 18px 40px -14px rgba(0,0,0,0.7);
+}
+.hero-inner .eyebrow{ display:block; text-align:center; }
+.hero h1{ color:var(--cream); }
+.hero-sub{
+  max-width:520px; margin:18px auto 0;
+  font-size:1.02rem;
+}
+.hero-actions{
+  margin-top:30px;
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  font-family:var(--font-body);
+  font-weight:800;
+  font-size:0.92rem;
+  padding:13px 26px;
+  border-radius:999px;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--teal), var(--teal-deep));
+  color:#101818;
+}
+.btn-primary:hover{
+  color:#101818;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px -10px rgba(79,173,166,0.55);
+}
+.btn-ghost{
+  border:1.5px solid var(--purple-deep);
+  color:var(--purple);
+  background:transparent;
+}
+.btn-ghost:hover{
+  background:rgba(168,137,214,0.1);
+  color:var(--purple);
+  transform:translateY(-2px);
+}
+
+/* ===========================================================
+   Aztec-diamond divider — signature element, echoes the band
+   of geometric pattern behind the cattle on the brand mark
+   =========================================================== */
+.divider{
+  position:relative; z-index:2;
+  height:34px;
+  margin:0 auto;
+  max-width:var(--wrap);
+  background-image:
+    linear-gradient(45deg, var(--purple-deep) 25%, transparent 25%, transparent 75%, var(--purple-deep) 75%),
+    linear-gradient(45deg, var(--purple-deep) 25%, transparent 25%, transparent 75%, var(--purple-deep) 75%),
+    linear-gradient(45deg, var(--teal-deep) 25%, transparent 25%, transparent 75%, var(--teal-deep) 75%),
+    linear-gradient(45deg, var(--teal-deep) 25%, transparent 25%, transparent 75%, var(--teal-deep) 75%);
+  background-size:34px 34px;
+  background-position:0 0, 17px 17px, 34px 0, 51px 17px;
+  opacity:0.55;
+  -webkit-mask-image:linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+          mask-image:linear-gradient(to bottom, transparent, black 40%, black 60%, transparent);
+}
+.divider-flip{ opacity:0.35; }
+
+/* ===========================================================
+   Sections
+   =========================================================== */
+.section{
+  position:relative; z-index:2;
+  padding:52px 0;
+}
+.section-lede{ font-size:1.05rem; }
+
+.about-header{
+  display:flex; align-items:center; gap:16px;
+  margin-bottom:0.6em;
+}
+.about-photo{
+  width:64px; height:64px; border-radius:50%;
+  object-fit:cover; object-position:top center;
+  border:2px solid var(--teal);
+  flex-shrink:0;
+}
+.about-header h2{ margin:0; }
+.about p{ color:var(--text-dim); }
+.signature{
+  font-family:var(--font-display);
+  color:var(--purple);
+  font-size:1.2rem;
+  margin-top:1.3em;
+}
+
+/* Needs tags */
+.tag-grid{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin:22px 0 20px;
+}
+.tag{
+  display:inline-block;
+  padding:9px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--bg-card);
+  color:var(--cream-dim);
+  font-size:0.88rem;
+  font-weight:700;
+}
+.tag-highlight{
+  background:linear-gradient(135deg, rgba(168,137,214,0.18), rgba(79,173,166,0.18));
+  border-color:var(--purple-deep);
+  color:var(--cream);
+}
+.needs-note{
+  font-size:0.92rem;
+  font-style:italic;
+  color:var(--text-dim);
+}
+
+/* Give cards */
+.give-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  margin-top:22px;
+}
+.give-card{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+}
+/* leopard-spot corner accent — used once per card, restrained */
+.give-card::after{
+  content:"";
+  position:absolute;
+  top:-30px; right:-30px;
+  width:90px; height:90px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%, var(--leopard) 0 6px, transparent 7px),
+    radial-gradient(circle at 65% 55%, var(--leopard) 0 5px, transparent 6px),
+    radial-gradient(circle at 45% 75%, var(--leopard) 0 4px, transparent 5px);
+  opacity:0.25;
+}
+.give-card p{ margin-bottom:0.6em; }
+.contact-list{
+  list-style:none; margin:12px 0 0; padding:0;
+  display:flex; flex-direction:column; gap:6px;
+}
+.contact-list a{ font-weight:700; }
+.mono{
+  font-family:ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  color:var(--cream);
+  font-weight:600;
+}
+.gofundme-link{ font-weight:800; }
+
+@media (min-width:640px){
+  .give-grid{ grid-template-columns:repeat(3, 1fr); }
+}
+
+/* Angel tree / help sections */
+.angel-tree, .help{
+  text-align:center;
+}
+.help .btn{ margin-top:10px; }
+
+.angel-tree-open{
+  display:inline-block;
+  font-family:var(--font-display);
+  color:var(--cream);
+  background:var(--bg-card-2);
+  border:1px solid var(--purple-deep);
+  padding:8px 20px;
+  border-radius:999px;
+  font-size:1.05rem;
+  margin:6px 0 26px;
+}
+
+.angel-tree-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  text-align:left;
+  margin-top:6px;
+}
+.angel-card{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.angel-card h3{ margin-bottom:0.5em; }
+.angel-card p{ font-size:0.95rem; margin-bottom:1.1em; }
+.angel-card .btn{ width:100%; text-align:center; }
+
+@media (min-width:560px){
+  .angel-tree-grid{ grid-template-columns:1fr 1fr; }
+}
+
+/* ===========================================================
+   Footer
+   =========================================================== */
+.site-footer{
+  position:relative; z-index:2;
+  padding:48px 0 40px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  background:var(--bg-card);
+}
+.footer-mark{
+  width:60px; height:60px; border-radius:50%;
+  margin:0 auto 16px;
+  border:2px solid var(--teal);
+}
+.footer-tagline{
+  max-width:420px; margin:0 auto 18px;
+  font-family:var(--font-display);
+  color:var(--cream-dim);
+  font-size:1.05rem;
+  line-height:1.4;
+}
+.footer-links{
+  display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  margin-bottom:22px;
+  font-size:0.88rem; font-weight:700;
+}
+.footer-credit{
+  font-size:0.78rem;
+  color:var(--text-dim);
+  margin:0;
+}
+.footer-credit a{ color:var(--text-dim); text-decoration:underline; }
+.footer-credit a:hover{ color:var(--teal); }
+
+/* ===========================================================
+   Scroll-reveal (progressive, respects reduced-motion via the
+   global rule above)
+   =========================================================== */
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
