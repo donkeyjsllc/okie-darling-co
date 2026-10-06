@@ -237,6 +237,37 @@ p{ margin:0 0 1em; color:var(--text-dim); }
   margin-top:1.3em;
 }
 
+/* Our Story section */
+.story-subhead{
+  margin-top:1.6em;
+  font-size:1.15rem;
+}
+.heritage-list{
+  list-style:none;
+  margin:0 0 1.8em;
+  padding:0;
+  display:flex; flex-direction:column; gap:14px;
+}
+.heritage-list li{
+  color:var(--text-dim);
+  padding-left:18px;
+  border-left:2px solid var(--purple-deep);
+}
+.heritage-list strong{ color:var(--cream); }
+.story-tagline{
+  font-family:var(--font-display);
+  color:var(--teal);
+  font-size:1.3rem;
+  text-align:center;
+  margin:1.6em 0 0.3em;
+}
+.story-cta-line{
+  text-align:center;
+  font-style:italic;
+  margin-bottom:1.4em;
+}
+.story .btn{ display:block; width:fit-content; margin:0 auto; }
+
 /* Needs tags */
 .tag-grid{
   display:flex; flex-wrap:wrap; gap:10px;
